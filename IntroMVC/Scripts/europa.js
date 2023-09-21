@@ -1,0 +1,2 @@
+﻿Europa = {};
+Europa.Controllers = {};

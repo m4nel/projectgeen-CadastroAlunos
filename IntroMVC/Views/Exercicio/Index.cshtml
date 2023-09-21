@@ -1,0 +1,15 @@
+@* Carrega o arquivo JavaScript principal da página *@
+<script src="~/Scripts/projeto/exercicio/exercicio.js"></script>
+<script>
+    @* Recebe as URLs que executam os métodos (ações) do controller da página Exercicio *@
+
+    Europa.Controllers.Exercicio.UrlCadastrarAluno = '@Url.Action("CadastrarAluno", "Exercicio")'
+    Europa.Controllers.Exercicio.UrlGetAluno = '@Url.Action("GetAluno", "Exercicio")'
+    Europa.Controllers.Exercicio.UrlAnterior = '@Url.Action("Anterior", "Exercicio")'
+    Europa.Controllers.Exercicio.UrlProximo = '@Url.Action("Proximo", "Exercicio")'
+    Europa.Controllers.Exercicio.UrlExcluirAluno = '@Url.Action("ExcluirAluno", "Exercicio")'
+</script>
+
+<div id="form-aluno">
+    @Html.Partial("_FormularioAluno")
+</div>

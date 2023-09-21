@@ -1,0 +1,12 @@
+﻿@* Carrega o arquivo JavaScript principal da página *@
+<script src="~/Scripts/projeto/home/home.js"></script>
+<script>
+    @* Recebe as URLs que executam os métodos (ações) do controller da página Home *@
+        Europa.Controllers.Home.UrlGetEntidade = '@Url.Action("GetEntidade", "Home")';
+
+</script>
+
+
+<div id="form-entidade">
+    @Html.Partial("_FormularioEntidade")
+</div>
