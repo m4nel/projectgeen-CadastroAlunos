@@ -1,6 +1,4 @@
 @model TreinamentoWeb.Models.Aluno
-    @*@TreinamentoWeb.Enum*@
-
 
 <div class="">
     <form class="bg-secondary col-md-12">
@@ -9,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                <button type="button" value="Anterior" class="anterior btn btn-light w-100" onclick="TrocaPagina('anterior')"><i class="fa fa-arrow-left" aria-hidden="true"></i>Anterior</button>
+                <button type="button" value="Anterior" class="anterior btn btn-light w-100" onclick="TrocaPagina('anterior')"><i class="fa fa-arrow-left" aria-hidden="true" ></i>Anterior</button>
             </div>
             <div class="col-md-2 offset-2">
                 <button type="button" value="Excluir" class="excluir btn btn-danger w-100" onclick="ExcluirAluno()">
@@ -39,12 +37,12 @@
                 @Html.Label("Matricula")
                 @Html.TextBoxFor(x => x.Matricula, null, new { @class = "form-control", @id = "matricula", disabled = "disabled" })
             </div>
-            
+
             <div class="col-md-3 col-md-offset-1">
-                    @Html.Label("Situacao")
-                    @Html.TextBoxFor(x => x.Situacao, null, new { @class = "form-control", @id = "situacao", disabled = "disabled" })
-             </div>
-            
+                @Html.Label("Situacao")
+                @Html.TextBoxFor(x => x.Situacao, null, new { @class = "form-control", @id = "situacao", disabled = "disabled" })
+            </div>
+
             <div class="col-md-3">
                 @Html.Label("CPF")
                 @Html.TextBoxFor(x => x.CPFaluno, null, new { @class = "form-control", @id = "cpf", disabled = "disabled" })
@@ -81,7 +79,7 @@
 
                     <div class="col-3">
                         <label>Nome</label>
-                        <input id="nomeModal" class="align-content-center"/>
+                        <input id="nomeModal" class="align-content-center" />
                     </div>
                     <div class="col-3">
                         <label>Matricula</label>
@@ -91,15 +89,15 @@
                         <label>Situação</label>
                         <select class="form-select col-3" aria-label="Default select example" id="situacaoModal">
                             <option selected value="">Selecione</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="@TreinamentoWeb.Enum.SituacaoEnum.Ativo">Ativo</option>
+                            <option value="@TreinamentoWeb.Enum.SituacaoEnum.Supenso">Suspenso</option>
+                            <option value="@TreinamentoWeb.Enum.SituacaoEnum.Cancelado">Cancelado</option>
                         </select>
                     </div>
                     <div class="col-3">
                         <label>CPF</label>
                         <input id="cpfModal" />
-                    
+
                     </div>
                     <div class="col-4">
                         <label>Nome Mãe</label>
@@ -109,15 +107,17 @@
                         <label>Curso</label>
                         <select class="form-select" aria-label="Default select example" id="cursoModal">
                             <option selected value="">Selecione</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="@TreinamentoWeb.Enum.CursoEnum.Java">Java</option>
+                            <option value="@TreinamentoWeb.Enum.CursoEnum.Javascript">Javascript</option>
+                            <option value="@TreinamentoWeb.Enum.CursoEnum.Csharp">Csharp</option>
+                            <option value="@TreinamentoWeb.Enum.CursoEnum.Php">Php</option>
+                            <option value="@TreinamentoWeb.Enum.CursoEnum.Delphi">Delphi</option>
                         </select>
-                    </div >
+                    </div>
                     <div class="col-4">
                         <label>Data Nascimento</label>
                         <input id="dataNascimentoModal" />
-                    </div> 
+                    </div>
                     <div class="col-12 row ms-1">
                         <label>Observações</label>
                         <textarea id="obsModal" class="b"></textarea>
@@ -127,6 +127,25 @@
                 <div class="modal-footer">
                     <button type="button" class="salvarModal btn btn-primary" onclick="SalvarModal()">Salvar Alterações</button>
                     <button type="button" class="fecharModal btn btn-secondary" data-dismiss="modal" onclick="fecharModal()">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" id="modalAlunoSalvo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="AlunoModal">
+                        
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

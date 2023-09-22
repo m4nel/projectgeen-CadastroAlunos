@@ -1,4 +1,6 @@
 ﻿
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +13,7 @@ namespace TreinamentoWeb.Controllers
     public class ExercicioController : BaseController
     {
         private static List<Aluno> Alunos = new List<Aluno>();
-
-        private static List<long> Ids = new List<long>();
-
-        private static int IncrementaId = 0;
+        private static int IncrementaId = 1;
 
         public ExercicioController()
         {
@@ -98,11 +97,10 @@ namespace TreinamentoWeb.Controllers
                 return Json(json, JsonRequestBehavior.AllowGet);
             }
 
-            var alunoHtml = RenderRazorViewToString("~/Views/Exercicio/_FormularioAluno.cshtml", aluno, false);
-
             aluno.Id = IncrementaId++;
             Alunos.Add(aluno);
-            Ids.Add(aluno.Id);
+            
+            var alunoHtml = RenderRazorViewToString("~/Views/Exercicio/_FormularioAluno.cshtml", aluno, false);
 
             json.Objeto = alunoHtml;
             json.Sucesso = true;
@@ -133,10 +131,8 @@ namespace TreinamentoWeb.Controllers
             }
 
             var alunoHtml = RenderRazorViewToString("~/Views/Exercicio/_FormularioAluno.cshtml", alunoParaRenderizar, false);
-
-            Ids.Remove(alunoParaExcluir.Id);
+            
             Alunos.Remove(alunoParaExcluir);
-
 
             json.Objeto = alunoHtml;
             json.Sucesso = true;

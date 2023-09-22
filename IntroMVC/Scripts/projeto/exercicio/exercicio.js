@@ -28,8 +28,16 @@ Europa.Controllers.Exercicio.TrocaPagina = function (key, cpf) {
 }
 
 function AbrirModal() {
+
     $("#meuModal").modal("show");
 };
+function ModalAlunoSalvo() {
+
+    $("#modalAlunoSalvo").modal("show");
+    $("#AlunoModal").text(` O aluno ${$("#nome").val()} foi salvo com sucesso.`);
+};
+
+// modal de aluno salvo receberia uma mensagem ne e agente passaria ela por parametro e rendeenzaria junto com esse nome.val e desce só pra eu te mostrar
 function fecharModal() {
 
     $("#meuModal").modal("hide");
@@ -74,8 +82,10 @@ Europa.Controllers.Exercicio.CadastrarAluno = function () {
              
              sucesso = true;
              copiaObj = obj;
+
              fecharModal();
              $("#form-aluno").html(result.Objeto);
+             ModalAlunoSalvo();
          },
 
          error: function (error) {

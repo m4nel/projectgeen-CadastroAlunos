@@ -18,5 +18,6 @@ namespace TreinamentoWeb.Models
 
         public DateTime DataDeNascimento { get; set; }
         public string Observacoes { get; set; }
+        public object SituacaoEnum { get; internal set; }
     }
 }
