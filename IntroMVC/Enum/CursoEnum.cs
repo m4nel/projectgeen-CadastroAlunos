@@ -7,8 +7,10 @@ namespace TreinamentoWeb.Enum
 {
     public enum CursoEnum
     {
-        Ativo = 1,
-        Supenso,
-        Cancelado
+        Java = 1,
+        Javascript,
+        Csharp,
+        Php,
+        Delphi
     }
 }

@@ -8,17 +8,26 @@
             <h1 class="bg-light">Alunos - << NOME_DO_ALUNO >></h1>
         </div>
         <div class="row">
-            <div class="col-md-3">
-                <input type="button" value="Anterior"  class="anterior btn btn-light" onclick="trocarPaginalMenos()">
+            <div class="col-md-2">
+                <button type="button" value="Anterior" class="anterior btn btn-light w-100" onclick="TrocaPagina('anterior')"><i class="fa fa-arrow-left" aria-hidden="true"></i>Anterior</button>
             </div>
-            <div class="col-md-3">
-                <input type="button" value="Excluir" class="excluir btn btn-danger" onclick="ExcluirAluno()">
+            <div class="col-md-2 offset-2">
+                <button type="button" value="Excluir" class="excluir btn btn-danger w-100" onclick="ExcluirAluno()">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    Excluir
+                </button>
             </div>
-            <div class="col-md-3">
-                <input type="button" value="Incluir" class="incluir btn bg-primary" onclick="AbrirModal()">
+            <div class="col-md-2">
+                <button type="button" value="Incluir" class="incluir btn bg-primary w-100" onclick="AbrirModal()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Incluir
+                </button>
             </div>
-            <div class="col-md-3">
-                <input type="button" value="Proximo" class="proximo btn bg-light" onclick="trocarPaginalMais()">
+            <div class="col-md-2 offset-2">
+                <button type="button" value="Proximo" class="proximo btn bg-light w-100" onclick="TrocaPagina('proximo')">
+                    Proximo
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
         <div class="row">
@@ -122,6 +131,4 @@
             </div>
         </div>
     </div>
-    
-
 </div>

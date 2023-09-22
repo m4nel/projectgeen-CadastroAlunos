@@ -13,37 +13,36 @@ Europa.Controllers.Exercicio.GetAluno = function (Id) {
 };
 
 
-function trocarPaginalMais() {
-    contadorId++;
-};
-function trocarPaginalMenos() {
-    contadorId = contadorId - 1;
-};
+function TrocaPagina(key) {
+
+    Europa.Controllers.Exercicio.TrocaPagina(key, $('#cpf').val());
+
+}
+
+Europa.Controllers.Exercicio.TrocaPagina = function (key, cpf) {
+
+    $.get(Europa.Controllers.Exercicio.UrlTrocaPagina, { key, cpf }, function (res) {
+        $("#form-aluno").html(res.Objeto);
+    });
+
+}
+
 function AbrirModal() {
     $("#meuModal").modal("show");
 };
 function fecharModal() {
 
-    console.log("foi, fechar modal");
     $("#meuModal").modal("hide");
-    if (sucesso) {
-        //Europa.Controllers.Exercicio.GetAluno(copiaObj.Id);
-        console.log(copiaObj.Id);
 
-    }
-};
+}
 
 function SalvarModal() {
     Europa.Controllers.Exercicio.CadastrarAluno();
 };
 
-var contadorId = 0;
-
 Europa.Controllers.Exercicio.CadastrarAluno = function () {
-    contadorId++ 
 
     var obj = {
-        Id: contadorId,
         Nome: $('#nomeModal').val(), 
         Matricula: $('#matriculaModal').val(), 
         Situacao: $('#situacaoModal').val(), 
@@ -65,14 +64,14 @@ Europa.Controllers.Exercicio.CadastrarAluno = function () {
     //});
 
      $.ajax({
-         type: 'POST', // Método HTTP POST
-         url: Europa.Controllers.Exercicio.UrlCadastrarAluno, // Substitua 'NomeDoControlador' pelo nome real do seu controlador
-         data: JSON.stringify(obj), // Converte o objeto para JSON
+         type: 'POST', 
+         url: Europa.Controllers.Exercicio.UrlCadastrarAluno, 
+         data: JSON.stringify(obj),
          contentType: 'application/json',
 
         
          success: function (result) {
-             // Manipular a resposta do servidor aqui
+             
              sucesso = true;
              copiaObj = obj;
              fecharModal();
@@ -80,8 +79,8 @@ Europa.Controllers.Exercicio.CadastrarAluno = function () {
          },
 
          error: function (error) {
-            // Manipular erros aqui
-             console.log(error);
+
+             //Tem q ter algo aq
          }
     });
 };
@@ -89,7 +88,7 @@ Europa.Controllers.Exercicio.CadastrarAluno = function () {
 function ExcluirAluno() {
 
     Europa.Controllers.Exercicio.ExcluirAluno($('#cpf').val())
-
+    
 };
 Europa.Controllers.Exercicio.ExcluirAluno = function (cpf) {
 
@@ -97,8 +96,8 @@ Europa.Controllers.Exercicio.ExcluirAluno = function (cpf) {
     var URL = Europa.Controllers.Exercicio.UrlExcluirAluno + "?cpf=" + encodeURIComponent(stringValue);
 
     $.ajax({
-        type: 'DELETE', // Método HTTP POST
-        url: URL, // Substitua 'NomeDoControlador' pelo nome real do seu controlador
+        type: 'POST', 
+        url: URL,
         
         success: function (result) {
             // Manipular a resposta do servidor aqui
@@ -106,9 +105,7 @@ Europa.Controllers.Exercicio.ExcluirAluno = function (cpf) {
         },
 
         error: function (error) {
-            // Manipular erros aqui
-            console.log(error);
+            alert("Tentou Excluir sem ter aluno");
         }
     });
-    
 }
