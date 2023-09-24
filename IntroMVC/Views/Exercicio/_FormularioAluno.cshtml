@@ -1,13 +1,16 @@
 @model TreinamentoWeb.Models.Aluno
 
-<div class="">
-    <form class="bg-secondary col-md-12">
-        <div>
+
+    <form class="bg-secondary">
+        <div class="row">
             <h1 class="bg-light">Alunos - << NOME_DO_ALUNO >></h1>
         </div>
         <div class="row">
             <div class="col-md-2">
-                <button type="button" value="Anterior" class="anterior btn btn-light w-100" onclick="TrocaPagina('anterior')"><i class="fa fa-arrow-left" aria-hidden="true" ></i>Anterior</button>
+                <button type="button" value="Anterior" class="anterior btn btn-light w-100" onclick="TrocaPagina('anterior')">
+                    <i class="fa fa-arrow-left" aria-hidden="true">
+                    </i>Anterior
+                </button>
             </div>
             <div class="col-md-2 offset-2">
                 <button type="button" value="Excluir" class="excluir btn btn-danger w-100" onclick="ExcluirAluno()">
@@ -29,42 +32,47 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3">
+
+            <div class="col-md-4">
                 @Html.Label("Nome")
-                @Html.TextBoxFor(x => x.Nome, null, new { @class = "form-control", @id = "nome", disabled = "disabled" })
+                @Html.TextBoxFor(x => x.Nome, null, new { @class = "form-control", @id = "nome", disabled = "disabled", style = "width: 100%;" })
             </div>
-            <div class="col-md-3 col-md-offset-1">
+            <div class="col-md-2">
                 @Html.Label("Matricula")
                 @Html.TextBoxFor(x => x.Matricula, null, new { @class = "form-control", @id = "matricula", disabled = "disabled" })
             </div>
 
-            <div class="col-md-3 col-md-offset-1">
+            <div class="col-md-2">
                 @Html.Label("Situacao")
                 @Html.TextBoxFor(x => x.Situacao, null, new { @class = "form-control", @id = "situacao", disabled = "disabled" })
             </div>
-
-            <div class="col-md-3">
+            <div class="col-md-4">
                 @Html.Label("CPF")
-                @Html.TextBoxFor(x => x.CPFaluno, null, new { @class = "form-control", @id = "cpf", disabled = "disabled" })
+                @Html.TextBoxFor(x => x.CPFaluno, null, new { @class = "form-control", @id = "cpf", disabled = "disabled", style = "width: 100%;" })
             </div>
-            <div class="col-md-3 col-md-offset-1">
+        </div>
+        <div class="row">
+            <div class="col-md-4">
                 @Html.Label("Nome da Mãe")
                 @Html.TextBoxFor(x => x.NomeMae, null, new { @class = "form-control", @id = "nomeMae", disabled = "disabled" })
             </div>
-            <div class="col-md-4 col-md-offset-1">
+            <div class="col-md-5">
                 @Html.Label("Curso")
                 @Html.TextBoxFor(x => x.Curso, null, new { @class = "form-control", @id = "curso", disabled = "disabled" })
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 @Html.Label("Data de nascimento")
                 @Html.TextBoxFor(x => x.DataDeNascimento, null, new { @class = "form-control", @id = "dataNascimento", disabled = "disabled" })
             </div>
-            <div class="col-md-12">
-                @Html.Label("Observações")
-                @Html.TextBoxFor(x => x.Observacoes, null, new { @class = "form-control", @id = "observacoes", disabled = "disabled" })
+        </div>
+        <div class="row">
+            <div class="col-md-12 row m-0" >
+                @Html.LabelFor(x => x.Observacoes, "Observações")
+                @Html.TextAreaFor(x => x.Observacoes, new { @class = "form-control", @id = "observacoes", @disabled = "disabled", style = "width: 100%;" })
             </div>
         </div>
     </form>
+        
 
     <div class="modal " tabindex="-1" role="dialog" id="meuModal">
         <div class="modal-dialog modal-xl" role="document">
@@ -120,7 +128,7 @@
                     </div>
                     <div class="col-12 row ms-1">
                         <label>Observações</label>
-                        <textarea id="obsModal" class="b"></textarea>
+                        <textarea id="obsModal" class=""></textarea>
                     </div>
                 </div>
 
@@ -150,4 +158,4 @@
             </div>
         </div>
     </div>
-</div>
+

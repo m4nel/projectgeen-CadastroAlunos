@@ -110,7 +110,7 @@ Europa.Controllers.Exercicio.ExcluirAluno = function (cpf) {
         url: URL,
         
         success: function (result) {
-            // Manipular a resposta do servidor aqui
+            
             $("#form-aluno").html(result.Objeto);
         },
 
@@ -119,3 +119,5 @@ Europa.Controllers.Exercicio.ExcluirAluno = function (cpf) {
         }
     });
 }
+
+    // revisar sobre os inputs do cpf nome, que não estão preenchendo toda a div
