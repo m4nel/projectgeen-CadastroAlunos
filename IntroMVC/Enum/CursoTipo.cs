@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TreinamentoWeb.Enum
 {
-    public enum CursoEnum
+    public enum CursoTipo
     {
         Java = 1,
         Javascript,

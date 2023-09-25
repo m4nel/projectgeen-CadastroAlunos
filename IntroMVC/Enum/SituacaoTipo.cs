@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TreinamentoWeb.Enum
 {
-    public enum SituacaoEnum
+    public enum SituacaoTipo
     {
         Ativo = 1,
         Supenso,

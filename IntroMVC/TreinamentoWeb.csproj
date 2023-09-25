@@ -257,8 +257,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ExercicioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Enum\CursoEnum.cs" />
-    <Compile Include="Enum\SituacaoEnum.cs" />
+    <Compile Include="Enum\CursoTipo.cs" />
+    <Compile Include="Enum\SituacaoTipo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

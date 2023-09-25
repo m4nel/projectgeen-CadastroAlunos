@@ -1,11 +1,11 @@
 @model TreinamentoWeb.Models.Aluno
 
 
-    <form class="bg-secondary">
-        <div class="row">
+    <form class="">
+        <div class="row m-0">
             <h1 class="bg-light">Alunos - << NOME_DO_ALUNO >></h1>
         </div>
-        <div class="row">
+        <div class="row m-0">
             <div class="col-md-2">
                 <button type="button" value="Anterior" class="anterior btn btn-light w-100" onclick="TrocaPagina('anterior')">
                     <i class="fa fa-arrow-left" aria-hidden="true">
@@ -25,13 +25,13 @@
                 </button>
             </div>
             <div class="col-md-2 offset-2">
-                <button type="button" value="Proximo" class="proximo btn bg-light w-100" onclick="TrocaPagina('proximo')">
+                <button type="button" value="Proximo" class="proximo btn btn-light w-100" onclick="TrocaPagina('proximo')">
                     Proximo
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
-        <div class="row">
+        <div class="row m-0">
 
             <div class="col-md-4">
                 @Html.Label("Nome")
@@ -48,10 +48,10 @@
             </div>
             <div class="col-md-4">
                 @Html.Label("CPF")
-                @Html.TextBoxFor(x => x.CPFaluno, null, new { @class = "form-control", @id = "cpf", disabled = "disabled", style = "width: 100%;" })
+                @Html.TextBoxFor(x => x.CPFaluno, null, new { @class = "form-control", @id = "cpf", disabled = "disabled", style = "width: 100%;", onkeypress = "$(this).mask('000.000.000-00');" })
             </div>
         </div>
-        <div class="row">
+        <div class="row m-0">
             <div class="col-md-4">
                 @Html.Label("Nome da Mãe")
                 @Html.TextBoxFor(x => x.NomeMae, null, new { @class = "form-control", @id = "nomeMae", disabled = "disabled" })
@@ -62,24 +62,22 @@
             </div>
             <div class="col-md-3">
                 @Html.Label("Data de nascimento")
-                @Html.TextBoxFor(x => x.DataDeNascimento, null, new { @class = "form-control", @id = "dataNascimento", disabled = "disabled" })
+                @Html.TextBoxFor(x => x.DataNascimento, null , new { @class = "form-control", @id = "dataNascimento", @disabled = "disabled" , onkeypress = "$(this).mask('00/00/0000')" })
             </div>
         </div>
-        <div class="row">
+        <div class="row m-0">
             <div class="col-md-12 row m-0" >
                 @Html.LabelFor(x => x.Observacoes, "Observações")
                 @Html.TextAreaFor(x => x.Observacoes, new { @class = "form-control", @id = "observacoes", @disabled = "disabled", style = "width: 100%;" })
             </div>
         </div>
     </form>
-        
-
     <div class="modal " tabindex="-1" role="dialog" id="meuModal">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="fecharModal()">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -97,14 +95,14 @@
                         <label>Situação</label>
                         <select class="form-select col-3" aria-label="Default select example" id="situacaoModal">
                             <option selected value="">Selecione</option>
-                            <option value="@TreinamentoWeb.Enum.SituacaoEnum.Ativo">Ativo</option>
-                            <option value="@TreinamentoWeb.Enum.SituacaoEnum.Supenso">Suspenso</option>
-                            <option value="@TreinamentoWeb.Enum.SituacaoEnum.Cancelado">Cancelado</option>
+                            <option value="@TreinamentoWeb.Enum.SituacaoTipo.Ativo">Ativo</option>
+                            <option value="@TreinamentoWeb.Enum.SituacaoTipo.Supenso">Suspenso</option>
+                            <option value="@TreinamentoWeb.Enum.SituacaoTipo.Cancelado">Cancelado</option>
                         </select>
                     </div>
                     <div class="col-3">
                         <label>CPF</label>
-                        <input id="cpfModal" />
+                        <input id="cpfModal" onkeypress="$(this).mask('000.000.000-00');"/>
 
                     </div>
                     <div class="col-4">
@@ -115,16 +113,16 @@
                         <label>Curso</label>
                         <select class="form-select" aria-label="Default select example" id="cursoModal">
                             <option selected value="">Selecione</option>
-                            <option value="@TreinamentoWeb.Enum.CursoEnum.Java">Java</option>
-                            <option value="@TreinamentoWeb.Enum.CursoEnum.Javascript">Javascript</option>
-                            <option value="@TreinamentoWeb.Enum.CursoEnum.Csharp">Csharp</option>
-                            <option value="@TreinamentoWeb.Enum.CursoEnum.Php">Php</option>
-                            <option value="@TreinamentoWeb.Enum.CursoEnum.Delphi">Delphi</option>
+                            <option value="@TreinamentoWeb.Enum.CursoTipo.Java">Java</option>
+                            <option value="@TreinamentoWeb.Enum.CursoTipo.Javascript">Javascript</option>
+                            <option value="@TreinamentoWeb.Enum.CursoTipo.Csharp">Csharp</option>
+                            <option value="@TreinamentoWeb.Enum.CursoTipo.Php">Php</option>
+                            <option value="@TreinamentoWeb.Enum.CursoTipo.Delphi">Delphi</option>
                         </select>
                     </div>
                     <div class="col-4">
                         <label>Data Nascimento</label>
-                        <input id="dataNascimentoModal" />
+                        <input id="dataNascimentoModal" onkeypress="$(this).mask('00/00/0000')"/>
                     </div>
                     <div class="col-12 row ms-1">
                         <label>Observações</label>
@@ -139,11 +137,10 @@
             </div>
         </div>
     </div>
-    <div class="modal" tabindex="-1" id="modalAlunoSalvo">
+    <div class="modal" tabindex="-1" id="modalAlunoSalvoExcluido">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -153,7 +150,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

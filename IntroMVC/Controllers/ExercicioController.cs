@@ -53,8 +53,6 @@ namespace TreinamentoWeb.Controllers
 
                 return Json(json, JsonRequestBehavior.AllowGet);
             }
-
-            
             var proximoAlunoExiste = Alunos.Exists(a => a.Id.Equals(alunoAtualId + 1));
             var proximoAlunoIdRenderizar = proximoAlunoExiste ? alunoAtualId + 1 : Alunos[0].Id;
             var proximoAlunoParaRenderizar = Alunos.FirstOrDefault(a => a.Id == proximoAlunoIdRenderizar);
@@ -71,7 +69,7 @@ namespace TreinamentoWeb.Controllers
         [HttpGet]
         public JsonResult GetAluno(int id)
         {
-            // Obtendo a entidade da lista usando LINQ e Lambda
+         
             var aluno = Alunos.FirstOrDefault(x => x.Id == id);
 
             var alunoHtml = RenderRazorViewToString("~/Views/Exercicio/_FormularioAluno.cshtml", aluno, false);
@@ -88,6 +86,7 @@ namespace TreinamentoWeb.Controllers
         [HttpPost]
         public JsonResult CadastrarAluno(Aluno aluno)
         {
+           
             var json = new JsonResponse();
 
             if (aluno is null)

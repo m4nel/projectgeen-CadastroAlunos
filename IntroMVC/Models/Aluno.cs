@@ -6,18 +6,21 @@ using TreinamentoWeb.Enum;
 
 namespace TreinamentoWeb.Models
 {
-    public class Aluno : Entidade
+    public class Aluno
     {
+        public long Id { get; set; }
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
         public string Matricula { get; set; }
-        public SituacaoEnum Situacao { get; set; }
+        public SituacaoTipo Situacao { get; set; }
 
         public string CPFaluno { get; set; }
         public string NomeMae { get; set; }
 
-        public CursoEnum Curso { get; set; }
+        public CursoTipo Curso { get; set; }
 
-        public DateTime DataDeNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
         public string Observacoes { get; set; }
-        public object SituacaoEnum { get; internal set; }
+        
     }
 }
